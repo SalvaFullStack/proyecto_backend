@@ -1,0 +1,82 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "api-multimedia",
+    "dateExported": "2023-11-13T08:51:06.027Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "32a06263-0ccb-4241-9b7b-4eb88c3b833a",
+            "colId": "76305528-f61b-4653-9e1e-8897ae2fa322",
+            "containerId": "",
+            "name": "/multimedia",
+            "url": "/",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2023-11-11T12:38:55.391Z",
+            "modified": "2023-11-11T12:55:47.893Z",
+            "headers": [
+                {
+                    "name": "x-auth-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NGY2OTVmZmY1M2JkMmZhNTFiZDljMSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY5OTcwNDI0N30.3Tyum0QZ76tur28UoN8pKwXCmAe_1oa8Z79xuabMyiY"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"iDplataforma\": \"c8HtCx\",\n  \"plataforma\": \"Spotify\"\n  \n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "2a86dc24-8ad2-4a6c-9618-2e2512f9fb6a",
+            "colId": "76305528-f61b-4653-9e1e-8897ae2fa322",
+            "containerId": "",
+            "name": "/multimedia/:multimediaId",
+            "url": "/654f792adefd7d5965af2615",
+            "method": "PUT",
+            "sortNum": 40000,
+            "created": "2023-11-11T12:38:55.392Z",
+            "modified": "2023-11-11T12:56:07.641Z",
+            "headers": [
+                {
+                    "name": "x-auth-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NGY2OTVmZmY1M2JkMmZhNTFiZDljMSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY5OTcwNDI0N30.3Tyum0QZ76tur28UoN8pKwXCmAe_1oa8Z79xuabMyiY"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"iDplataforma\": \"c8HtCxUhBnI\",\n  \"plataforma\": \"Youtube premium total\"\n\n  \n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "9c0ee599-ead3-4828-b35d-e69f60ad4137",
+            "colId": "76305528-f61b-4653-9e1e-8897ae2fa322",
+            "containerId": "",
+            "name": "/multimedia/:multimediaId",
+            "url": "/654f77efdefd7d5965af2613",
+            "method": "DELETE",
+            "sortNum": 50000,
+            "created": "2023-11-11T12:38:55.393Z",
+            "modified": "2023-11-11T12:54:41.051Z",
+            "headers": [
+                {
+                    "name": "x-auth-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NGY2OTVmZmY1M2JkMmZhNTFiZDljMSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY5OTcwNDI0N30.3Tyum0QZ76tur28UoN8pKwXCmAe_1oa8Z79xuabMyiY"
+                }
+            ],
+            "params": [],
+            "tests": []
+        }
+    ],
+    "settings": {
+        "options": {
+            "baseUrl": "{{host}}/multimedia"
+        },
+        "envId": "c7287f16-c381-4caf-981e-f98c83760053"
+    }
+}

@@ -1,0 +1,53 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "api-users",
+    "dateExported": "2023-11-13T08:51:11.339Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "bfb1d0ef-0680-40c2-934c-790583a349b7",
+            "colId": "8b8f6ee7-0a52-4cf1-b4c5-6ffa233c9d4c",
+            "containerId": "",
+            "name": "/register",
+            "url": "/register",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2023-11-11T11:33:57.503Z",
+            "modified": "2023-11-11T11:38:42.014Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"username\": \"Robustiano\",\n  \"password\": \"Federico\",\n  \"email\": \"blabla@hotmail.com\"\n  \n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "e0a57796-c40f-4fa5-ba0e-c82ecc7c73c6",
+            "colId": "8b8f6ee7-0a52-4cf1-b4c5-6ffa233c9d4c",
+            "containerId": "",
+            "name": "/login",
+            "url": "/login",
+            "method": "POST",
+            "sortNum": 40000,
+            "created": "2023-11-11T11:38:47.692Z",
+            "modified": "2023-11-11T11:39:11.023Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"username\": \"Robustiano\",\n  \"password\": \"Federico\"\n  \n}",
+                "form": []
+            },
+            "tests": []
+        }
+    ],
+    "settings": {
+        "options": {
+            "baseUrl": "{{host}}/users"
+        },
+        "envId": "c7287f16-c381-4caf-981e-f98c83760053"
+    }
+}

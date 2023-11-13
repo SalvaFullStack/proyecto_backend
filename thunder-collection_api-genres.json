@@ -1,0 +1,115 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "api-genres",
+    "dateExported": "2023-11-13T08:50:17.573Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "2b95383a-b2aa-4aad-9eba-8489556faa20",
+            "colId": "22bfc32a-1925-4760-afca-158e0bc812d4",
+            "containerId": "",
+            "name": "/genres",
+            "url": "/",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2023-11-11T11:09:39.682Z",
+            "modified": "2023-11-11T11:10:26.913Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "b6c9c620-f474-4ca2-85e1-7a9dc43ee1fd",
+            "colId": "22bfc32a-1925-4760-afca-158e0bc812d4",
+            "containerId": "",
+            "name": "/genres/:genreId",
+            "url": "/654f6e91e259b2cb5da8b1ae",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2023-11-11T11:15:31.815Z",
+            "modified": "2023-11-11T12:09:42.607Z",
+            "headers": [
+                {
+                    "name": "x-auth-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NGY2OTVmZmY1M2JkMmZhNTFiZDljMSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY5OTcwNDI0N30.3Tyum0QZ76tur28UoN8pKwXCmAe_1oa8Z79xuabMyiY"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "ceebcfe0-a8cd-4d3f-9ad8-1482740d1a59",
+            "colId": "22bfc32a-1925-4760-afca-158e0bc812d4",
+            "containerId": "",
+            "name": "/genres",
+            "url": "/",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2023-11-11T11:18:15.598Z",
+            "modified": "2023-11-11T12:37:42.626Z",
+            "headers": [
+                {
+                    "name": "x-auth-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NGY2OTVmZmY1M2JkMmZhNTFiZDljMSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY5OTcwNDI0N30.3Tyum0QZ76tur28UoN8pKwXCmAe_1oa8Z79xuabMyiY"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\": \"Grunge\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "3f984e19-0415-4bd0-89ad-d0aa6ff6ed6b",
+            "colId": "22bfc32a-1925-4760-afca-158e0bc812d4",
+            "containerId": "",
+            "name": "/genres/:genreId",
+            "url": "/654f6e91e259b2cb5da8b1ae",
+            "method": "PUT",
+            "sortNum": 40000,
+            "created": "2023-11-11T11:19:52.237Z",
+            "modified": "2023-11-11T12:11:25.863Z",
+            "headers": [
+                {
+                    "name": "x-auth-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NGY2OTVmZmY1M2JkMmZhNTFiZDljMSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY5OTcwNDI0N30.3Tyum0QZ76tur28UoN8pKwXCmAe_1oa8Z79xuabMyiY"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\": \"Robustiano update\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "74524ba0-b96f-4a06-9f3d-a3b400c5975d",
+            "colId": "22bfc32a-1925-4760-afca-158e0bc812d4",
+            "containerId": "",
+            "name": "/genres/:genreId",
+            "url": "/654f6e91e259b2cb5da8b1ae",
+            "method": "DELETE",
+            "sortNum": 50000,
+            "created": "2023-11-11T11:21:02.950Z",
+            "modified": "2023-11-11T12:11:59.626Z",
+            "headers": [
+                {
+                    "name": "x-auth-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NGY2OTVmZmY1M2JkMmZhNTFiZDljMSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY5OTcwNDI0N30.3Tyum0QZ76tur28UoN8pKwXCmAe_1oa8Z79xuabMyiY"
+                }
+            ],
+            "params": [],
+            "tests": []
+        }
+    ],
+    "settings": {
+        "options": {
+            "baseUrl": "{{host}}/genres"
+        },
+        "envId": "c7287f16-c381-4caf-981e-f98c83760053"
+    }
+}

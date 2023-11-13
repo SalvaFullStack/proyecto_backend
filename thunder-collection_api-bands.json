@@ -1,0 +1,115 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "api-bands",
+    "dateExported": "2023-11-13T08:51:00.624Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "4af4c423-a91d-4064-9eed-526f5d51206d",
+            "colId": "fe39150e-22a3-4f4b-9d8a-e1a48fa3ef12",
+            "containerId": "",
+            "name": "/bands",
+            "url": "/",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2023-11-11T12:19:58.109Z",
+            "modified": "2023-11-11T12:19:58.109Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "111617a8-0ec2-4403-a8ed-c1b4b36faa21",
+            "colId": "fe39150e-22a3-4f4b-9d8a-e1a48fa3ef12",
+            "containerId": "",
+            "name": "/bands/:bandId",
+            "url": "/654f7accdefd7d5965af2620",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2023-11-11T12:19:58.110Z",
+            "modified": "2023-11-11T13:04:10.056Z",
+            "headers": [
+                {
+                    "name": "x-auth-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NGY2OTVmZmY1M2JkMmZhNTFiZDljMSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY5OTcwNDI0N30.3Tyum0QZ76tur28UoN8pKwXCmAe_1oa8Z79xuabMyiY"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "cb5be363-3d90-4ddf-baac-75d4e1a58ad7",
+            "colId": "fe39150e-22a3-4f4b-9d8a-e1a48fa3ef12",
+            "containerId": "",
+            "name": "/bands",
+            "url": "/",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2023-11-11T12:19:58.111Z",
+            "modified": "2023-11-11T12:59:56.043Z",
+            "headers": [
+                {
+                    "name": "x-auth-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NGY2OTVmZmY1M2JkMmZhNTFiZDljMSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY5OTcwNDI0N30.3Tyum0QZ76tur28UoN8pKwXCmAe_1oa8Z79xuabMyiY"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\": \"El Niño Brasas\",\n  \"date\": \"2014-01-03\",\n  \"about\": \"Son la repolla con cebolla\",\n  \"genres\": \"654f6f2ce259b2cb5da8b1b2\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "1b21effb-8c99-4f09-8450-35df46377f3f",
+            "colId": "fe39150e-22a3-4f4b-9d8a-e1a48fa3ef12",
+            "containerId": "",
+            "name": "/bands/:bandId",
+            "url": "/654f7accdefd7d5965af2620",
+            "method": "PUT",
+            "sortNum": 40000,
+            "created": "2023-11-11T12:19:58.112Z",
+            "modified": "2023-11-11T13:00:08.474Z",
+            "headers": [
+                {
+                    "name": "x-auth-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NGY2OTVmZmY1M2JkMmZhNTFiZDljMSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY5OTcwNDI0N30.3Tyum0QZ76tur28UoN8pKwXCmAe_1oa8Z79xuabMyiY"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\": \"El Niño Brasas\",\n  \"date\": \"2014-01-03\",\n  \"about\": \"Son la repolla con cebolla\",\n  \"genres\": \"654f75960a7d4817c240d9e8\",\n  \"multimedia\": [\"654f79d6defd7d5965af261b\", \"654f792adefd7d5965af2615\" ]\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "02b4223c-9288-453c-8f01-c4b7bad4834a",
+            "colId": "fe39150e-22a3-4f4b-9d8a-e1a48fa3ef12",
+            "containerId": "",
+            "name": "/bands/:bandId",
+            "url": "/654f7427e259b2cb5da8b1b9",
+            "method": "DELETE",
+            "sortNum": 50000,
+            "created": "2023-11-11T12:19:58.113Z",
+            "modified": "2023-11-11T12:38:38.531Z",
+            "headers": [
+                {
+                    "name": "x-auth-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1NGY2OTVmZmY1M2JkMmZhNTFiZDljMSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY5OTcwNDI0N30.3Tyum0QZ76tur28UoN8pKwXCmAe_1oa8Z79xuabMyiY"
+                }
+            ],
+            "params": [],
+            "tests": []
+        }
+    ],
+    "settings": {
+        "options": {
+            "baseUrl": "{{host}}/bands"
+        },
+        "envId": "c7287f16-c381-4caf-981e-f98c83760053"
+    }
+}
