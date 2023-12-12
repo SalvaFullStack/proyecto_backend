@@ -8,6 +8,21 @@ const { User } = require("../models/user");
 
 const router = Router();
 
+router.get("/", async (req, res) => {
+  try {
+    // Verifica si el usuario actual es un administrador
+    if (!req.user.isAdmin) {
+      return res.status(403).json({ msg: "Acceso prohibido" });
+    }
+
+    // Llama al método estático getAll del modelo User
+    const users = await User.getAll();
+    res.json(users);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
 router.post("/login", async (req, res) => {
   const { username, password: passwordPlainText } = req.body;
 
