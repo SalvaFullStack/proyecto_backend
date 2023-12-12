@@ -1,5 +1,7 @@
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const auth = require("../middlewares/auth");
+const admin = require("../middlewares/admin");
 
 const { Router } = require("express");
 const { body, validationResult } = require("express-validator");
@@ -8,14 +10,8 @@ const { User } = require("../models/user");
 
 const router = Router();
 
-router.get("/", async (req, res) => {
+router.get("/", auth, admin, async (req, res) => {
   try {
-    // Verifica si el usuario actual es un administrador
-    if (!req.user.isAdmin) {
-      return res.status(403).json({ msg: "Acceso prohibido" });
-    }
-
-    // Llama al método estático getAll del modelo User
     const users = await User.getAll();
     res.json(users);
   } catch (error) {
