@@ -2,22 +2,24 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const auth = require("../middlewares/auth");
 const admin = require("../middlewares/admin");
-
+const userController = require("../controllers/user");
 const { Router } = require("express");
 const { body, validationResult } = require("express-validator");
-
-const { User } = require("../models/user");
+const User = require("../models/user");
 
 const router = Router();
 
 router.get("/", auth, admin, async (req, res) => {
   try {
-    const users = await User.getAll();
+    const users = await User.find();
     res.json(users);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
 });
+
+router.get("/teams", auth, userController.getAllTeams);
+router.get("/matchday", auth, userController.getMatchDay);
 
 router.post("/login", async (req, res) => {
   const { username, password: passwordPlainText } = req.body;
@@ -79,5 +81,18 @@ router.post(
     res.json({ msg: "Usuario registrado" });
   }
 );
+
+router.post("/teams", auth, admin, userController.createTeam);
+router.put("/teams/:teamId", auth, admin, userController.updateTeam);
+router.delete(
+  "/:userId",
+
+  auth,
+  admin,
+  userController.deletePlayer
+);
+router.delete("/teams/:teamId", auth, admin, userController.deleteTeam);
+
+router.post("/matchday", auth, admin, userController.createMatchDay);
 
 module.exports = router;

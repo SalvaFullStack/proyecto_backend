@@ -12,15 +12,6 @@ const userSchema = new mongoose.Schema({
   isAdmin: { type: Boolean },
 });
 
-userSchema.statics.getAll = async function () {
-  try {
-    const users = await this.find();
-    return users;
-  } catch (error) {
-    throw new Error(error.message);
-  }
-};
-
 const User = mongoose.model("User", userSchema);
 
-exports.User = User;
+module.exports = User;

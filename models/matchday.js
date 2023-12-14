@@ -12,4 +12,4 @@ const matchdaySchema = new mongoose.Schema({
 
 const Matchday = mongoose.model("Matchday", matchdaySchema);
 
-exports.Matchday = Matchday;
+module.exports = Matchday;

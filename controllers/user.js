@@ -1,5 +1,6 @@
-const { Matchday } = require("../models/matchday");
 const User = require("../models/user");
+const Team = require("../models/Teams");
+const Matchday = require("../models/matchday");
 
 // Funciones para el usuario normal
 const register = async (req, res) => {
@@ -26,63 +27,90 @@ const login = async (req, res) => {
   }
 };
 
-const getNextMatchday = async (req, res) => {
-  try {
-    // Aquí puedes realizar la lógica para obtener la próxima jornada.
-    // Supongamos que tienes un campo en el modelo Matchday que indica si la jornada es futura.
-
-    const nextMatchday = await Matchday.findOne({ future: true }).populate(
-      "matches.homeTeam matches.awayTeam"
-    );
-
-    if (!nextMatchday) {
-      return res.status(404).json({ error: "No upcoming matchdays found" });
-    }
-
-    res.json({ matchday: nextMatchday });
-  } catch (error) {
-    res.status(400).json({ error: error.message });
-  }
-};
-
 // Funciones para el administrador
-const viewAllPlayers = async (req, res) => {
+
+const createTeam = async (req, res) => {
   try {
-    const allPlayers = await User.find();
-    res.json(allPlayers);
+    const { name, players } = req.body;
+    const newTeam = await Team.create({ name, players });
+    res.json(newTeam);
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
 };
 
-const filterPlayersByPosition = async (req, res) => {
+const createMatchDay = async (req, res) => {
   try {
-    const { position } = req.params;
-    const playersByPosition = await User.find({ position });
-    res.json(playersByPosition);
+    const { homeTeam, awayTeam, result } = req.body;
+    const newMatchDay = await Matchday.create({ homeTeam, awayTeam, result });
+    res.json(newMatchDay);
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
 };
 
-const assignUsersToTeam = async (req, res) => {
+const getAllTeams = async (req, res) => {
   try {
-    const { userIds, teamId } = req.body;
+    const teams = await Team.find();
+    res.json(teams);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
 
-    if (!req.user.isAdmin) {
-      return res.status(403).json({ error: "Permission denied" });
+const getMatchDay = async (req, res) => {
+  try {
+    const matchdays = await Matchday.find();
+    res.json(matchdays);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+const updateTeam = async (req, res) => {
+  try {
+    const { teamId } = req.params;
+    const updatedTeam = await Team.updateOne({ _id: teamId }, req.body);
+    res.json(updatedTeam);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+const deletePlayer = async (req, res) => {
+  try {
+    const { userId } = req.params;
+
+    if (!userId) {
+      return res.status(400).json({ error: "Missing required parameter" });
     }
 
-    if (!userIds || !teamId) {
-      return res.status(400).json({ error: "Missing required parameters" });
+    const deletedUser = await User.findByIdAndDelete(userId);
+
+    if (!deletedUser) {
+      return res.status(404).json({ error: "User not found" });
     }
 
-    const updatedUsers = await User.updateMany(
-      { _id: { $in: userIds } },
-      { $set: { teamId: teamId } }
-    );
+    res.json({ success: true, deletedUser });
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
 
-    res.json({ success: true, updatedUsers });
+const deleteTeam = async (req, res) => {
+  try {
+    const { teamId } = req.params;
+    if (!teamId) {
+      return res.status(400).json({ error: "Missing required parameter" });
+    }
+
+    const deletedTeam = await Team.findByIdAndDelete(teamId);
+
+    if (!deletedTeam) {
+      return res.status(404).json({ error: "Team not found" });
+    }
+
+    res.json({ success: true, deletedTeam });
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
@@ -91,9 +119,11 @@ const assignUsersToTeam = async (req, res) => {
 module.exports = {
   register,
   login,
-  getNextMatchday,
-  viewAllPlayers,
-  filterPlayersByPosition,
-  assignUsersToTeam,
-  // Agrega aquí las demás funciones del administrador...
+  deletePlayer,
+  createTeam,
+  getAllTeams,
+  updateTeam,
+  deleteTeam,
+  createMatchDay,
+  getMatchDay,
 };
