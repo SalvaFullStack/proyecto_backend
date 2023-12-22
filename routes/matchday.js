@@ -7,10 +7,16 @@ const { Router } = require("express");
 
 const router = Router();
 
-router.get("/", matchdayController.getAll);
-router.get("/:matchdayId", auth, admin, matchdayController.getById);
-router.post("/", auth, admin, matchdayController.create);
-router.put("/:matchdayId", auth, admin, matchdayController.update);
+router.get("/", matchdayController.getAllMatchdays);
+
+// router.get("/last", auth, matchdayController.getLastMatchDay);
+router.get("/:matchday", auth, matchdayController.getByMatchDay);
+
+router.post("/", auth, admin, matchdayController.saveMatchday);
+
+// router.put("/", auth, admin, matchdayController.update);
+// router.put("/close", auth, admin, matchdayController.close);
+
 router.delete("/:matchdayId", auth, admin, matchdayController.remove);
 
 module.exports = router;

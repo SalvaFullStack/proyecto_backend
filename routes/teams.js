@@ -6,23 +6,30 @@ const admin = require("../middlewares/admin");
 
 const router = Router();
 
-router.get("/", teamController.getAll);
+router.get("/", auth, admin, teamController.getAll);
 router.get("/:teamId", teamController.getById);
 
 router.post(
   "/",
-  auth,
-  admin,
 
   teamController.create
 );
+
 router.put(
   "/:teamId",
+
   auth,
   admin,
-
   teamController.update
 );
+
 router.delete("/:teamId", auth, admin, teamController.remove);
+
+router.put(
+  "/api/teams/:teamId/removePlayer/:playerId",
+  auth,
+  admin,
+  teamController.removePlayerFromTeam
+);
 
 module.exports = router;

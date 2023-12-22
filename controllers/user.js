@@ -33,6 +33,9 @@ const createTeam = async (req, res) => {
   try {
     const { name, players } = req.body;
     const newTeam = await Team.create({ name, players });
+
+    await User.updateMany({ _id: { $in: players } }, { team: newTeam._id });
+
     res.json(newTeam);
   } catch (error) {
     res.status(400).json({ error: error.message });
@@ -58,6 +61,37 @@ const getAllTeams = async (req, res) => {
   }
 };
 
+const getProfile = async (req, res) => {
+  try {
+    const player = await User.findById(req.user.id)
+      .select("-password")
+      .populate("team");
+
+    if (!player) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    res.json(player);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+const getOneTeam = async (req, res) => {
+  try {
+    const { teamId } = req.params;
+    const team = await Team.findById(teamId).populate("players");
+
+    if (!team) {
+      return res.status(404).json({ error: "Team not found" });
+    }
+
+    res.json(team);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
 const getMatchDay = async (req, res) => {
   try {
     const matchdays = await Matchday.find();
@@ -72,6 +106,29 @@ const updateTeam = async (req, res) => {
     const { teamId } = req.params;
     const updatedTeam = await Team.updateOne({ _id: teamId }, req.body);
     res.json(updatedTeam);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+const assignUserToTeam = async (req, res) => {
+  try {
+    const { teamId } = req.params;
+    const { userId } = req.body;
+
+    // Validar si el usuario y el equipo existen antes de asignar
+    const user = await User.findById(userId);
+    const team = await Team.findById(teamId);
+
+    if (!user || !team) {
+      return res.status(404).json({ error: "User or Team not found" });
+    }
+
+    // Asignar el usuario al equipo
+    user.team = teamId;
+    await user.save();
+
+    res.json({ success: true, user });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
@@ -126,4 +183,7 @@ module.exports = {
   deleteTeam,
   createMatchDay,
   getMatchDay,
+  getProfile,
+  getOneTeam,
+  assignUserToTeam,
 };

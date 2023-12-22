@@ -9,7 +9,8 @@ const User = require("../models/user");
 
 const router = Router();
 
-router.get("/", auth, admin, async (req, res) => {
+// Añadir auth, admin
+router.get("/", async (req, res) => {
   try {
     const users = await User.find();
     res.json(users);
@@ -18,8 +19,16 @@ router.get("/", auth, admin, async (req, res) => {
   }
 });
 
+router.get("/profile", auth, userController.getProfile);
+
+// Añadir auth,
 router.get("/teams", auth, userController.getAllTeams);
-router.get("/matchday", auth, userController.getMatchDay);
+
+// Añadir auth, admin
+router.get("/teams/:teamId", auth, admin, userController.getOneTeam);
+
+// Añadir auth
+router.get("/team/:teamId", auth, userController.getOneTeam);
 
 router.post("/login", async (req, res) => {
   const { username, password: passwordPlainText } = req.body;
@@ -35,11 +44,12 @@ router.post("/login", async (req, res) => {
     return res.status(400).json({ msg: "Usuario o contraseña incorrecto" });
 
   const token = jwt.sign(
-    { id: user._id, isAdmin: user.isAdmin },
+    { id: user._id, isAdmin: user.isAdmin, username: user.username },
     process.env.privateKey
   );
 
   res.setHeader("x-auth-token", token);
+  res.setHeader("Access-Control-Expose-Headers", "x-auth-token");
   res.json({ msg: "Usuario logueado" });
 });
 
@@ -73,26 +83,26 @@ router.post(
     const newUser = await User.create({ username, password, ...rest });
 
     const token = jwt.sign(
-      { id: newUser._id, isAdmin: newUser.isAdmin },
+      { id: newUser._id, isAdmin: newUser.isAdmin, username: newUser.username },
       process.env.privateKey
     );
 
     res.setHeader("x-auth-token", token);
+    res.setHeader("Access-Control-Expose-Headers", "x-auth-token");
     res.json({ msg: "Usuario registrado" });
   }
 );
 
 router.post("/teams", auth, admin, userController.createTeam);
-router.put("/teams/:teamId", auth, admin, userController.updateTeam);
-router.delete(
-  "/:userId",
 
-  auth,
-  admin,
-  userController.deletePlayer
-);
+router.put("/teams/:teamId", auth, admin, userController.updateTeam);
+
+router.delete("/:userId", auth, admin, userController.deletePlayer);
+
 router.delete("/teams/:teamId", auth, admin, userController.deleteTeam);
 
 router.post("/matchday", auth, admin, userController.createMatchDay);
+
+router.put("/teams/:teamId", auth, admin, userController.assignUserToTeam);
 
 module.exports = router;

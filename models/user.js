@@ -10,6 +10,7 @@ const userSchema = new mongoose.Schema({
     required: true,
   },
   isAdmin: { type: Boolean },
+  team: { type: mongoose.ObjectId, ref: "Team" },
 });
 
 const User = mongoose.model("User", userSchema);
